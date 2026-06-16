@@ -26,7 +26,7 @@ namespace local_pluginsview\local;
  */
 final class pluginsview_manager_test extends \advanced_testcase {
     /**
-     * The manager returns the installed plugins with the expected structure.
+     * The manager returns only additional plugins, excluding Moodle core plugins.
      *
      * @return void
      */
@@ -43,13 +43,13 @@ final class pluginsview_manager_test extends \advanced_testcase {
             $bycomponent[$plugin->component] = $plugin;
         }
 
-        $this->assertArrayHasKey('mod_forum', $bycomponent);
         $this->assertArrayHasKey('local_pluginsview', $bycomponent);
+        $this->assertArrayNotHasKey('mod_forum', $bycomponent);
 
-        $forum = $bycomponent['mod_forum'];
-        $this->assertSame('mod', $forum->type);
-        $this->assertNotEmpty($forum->displayname);
-        $this->assertNotEmpty($forum->versiondb);
+        $self = $bycomponent['local_pluginsview'];
+        $this->assertSame('local', $self->type);
+        $this->assertNotEmpty($self->displayname);
+        $this->assertNotEmpty($self->versiondb);
     }
 
     /**

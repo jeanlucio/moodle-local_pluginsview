@@ -41,7 +41,10 @@ class pluginsview_manager {
     const STATUS_NOTFOUND = 'notfound';
 
     /**
-     * Returns every installed plugin with its locally available metadata.
+     * Returns the installed additional (non-standard) plugins with their local metadata.
+     *
+     * Plugins that ship with Moodle core are skipped: the plugin only reports
+     * third-party plugins added to the site.
      *
      * @return stdClass[] List of plugins, each with component, displayname, type and versiondb.
      */
@@ -51,6 +54,9 @@ class pluginsview_manager {
 
         foreach ($pluginman->get_plugins() as $typeplugins) {
             foreach ($typeplugins as $plugin) {
+                if ($plugin->is_standard()) {
+                    continue;
+                }
                 $info = new stdClass();
                 $info->component = $plugin->component;
                 $info->displayname = $plugin->displayname;

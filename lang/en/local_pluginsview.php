@@ -38,4 +38,5 @@ $string['statusnotfound'] = 'Not in the directory';
 $string['statusoutdated'] = 'Update available';
 $string['statuspending'] = 'Checking…';
 $string['statusuptodate'] = 'Up to date';
+$string['taskrefreshcache'] = 'Refresh the plugins directory cache';
 $string['viewindirectory'] = 'View in directory';

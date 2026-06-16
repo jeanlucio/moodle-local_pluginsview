@@ -57,6 +57,19 @@ class moodle_directory_api {
             return $cached;
         }
 
+        return $this->refresh_plugin_info($component);
+    }
+
+    /**
+     * Fetches fresh directory information for a plugin, bypassing the cache read.
+     *
+     * Found and not found results are written to the cache. A network or SSL
+     * error returns an unavailable result and is not cached, so it is retried.
+     *
+     * @param string $component Frankenstyle name of the plugin.
+     * @return stdClass Result object with a status property and, when found, the version metadata.
+     */
+    public function refresh_plugin_info(string $component): stdClass {
         $response = $this->fetch($component);
         if ($response === null) {
             return $this->make_result(self::STATUS_UNAVAILABLE);
@@ -70,7 +83,7 @@ class moodle_directory_api {
             $result = $this->make_result(self::STATUS_NOTFOUND);
         }
 
-        $cache->set($component, $result);
+        cache::make('local_pluginsview', 'plugindirectorydata')->set($component, $result);
 
         return $result;
     }

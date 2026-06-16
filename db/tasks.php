@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Brazilian Portuguese strings for local_pluginsview.
+ * Scheduled task definitions for local_pluginsview.
  *
  * @package    local_pluginsview
  * @copyright  2026 Jean Lúcio
@@ -24,19 +24,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['colavailableversion'] = 'Versão disponível';
-$string['colcomponent'] = 'Frankenstyle';
-$string['collink'] = 'Link';
-$string['colname'] = 'Nome';
-$string['colreleasedate'] = 'Data de lançamento';
-$string['colstatus'] = 'Status';
-$string['coltype'] = 'Tipo';
-$string['colversiondb'] = 'Versão instalada';
-$string['pluginname'] = 'Visão de plugins';
-$string['pluginsview:view'] = 'Visualizar a lista de plugins instalados';
-$string['statusnotfound'] = 'Não disponível no diretório oficial';
-$string['statusoutdated'] = 'Atualização disponível';
-$string['statuspending'] = 'Verificando…';
-$string['statusuptodate'] = 'Atualizado';
-$string['taskrefreshcache'] = 'Atualizar o cache do diretório de plugins';
-$string['viewindirectory'] = 'Ver no diretório';
+$tasks = [
+    [
+        'classname' => 'local_pluginsview\task\refresh_plugin_cache',
+        'blocking' => 0,
+        'minute' => '0',
+        'hour' => '1',
+        'day' => '*',
+        'month' => '*',
+        'dayofweek' => '*',
+    ],
+];
