@@ -25,3 +25,4 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Visão de plugins';
+$string['pluginsview:view'] = 'Visualizar a lista de plugins instalados';

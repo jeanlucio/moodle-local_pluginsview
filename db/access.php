@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * English strings for local_pluginsview.
+ * Capability definitions for local_pluginsview.
  *
  * @package    local_pluginsview
  * @copyright  2026 Jean Lúcio
@@ -24,5 +24,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Plugins view';
-$string['pluginsview:view'] = 'View the list of installed plugins';
+$capabilities = [
+    'local/pluginsview:view' => [
+        'riskbitmask' => RISK_PERSONAL,
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [],
+    ],
+];
