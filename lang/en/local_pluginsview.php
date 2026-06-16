@@ -24,5 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['colcomponent'] = 'Frankenstyle';
+$string['colname'] = 'Name';
+$string['coltype'] = 'Type';
+$string['colversiondb'] = 'Installed version';
 $string['pluginname'] = 'Plugins view';
 $string['pluginsview:view'] = 'View the list of installed plugins';

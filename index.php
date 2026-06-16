@@ -23,6 +23,10 @@
  */
 
 require(__DIR__ . '/../../config.php');
+require_once($CFG->libdir . '/tablelib.php');
+
+use local_pluginsview\local\pluginsview_manager;
+use local_pluginsview\output\pluginsview_table;
 
 require_login();
 $context = context_system::instance();
@@ -34,6 +38,22 @@ $PAGE->set_pagelayout('standard');
 $PAGE->set_title(get_string('pluginname', 'local_pluginsview'));
 $PAGE->set_heading(get_string('pluginname', 'local_pluginsview'));
 
+$manager = new pluginsview_manager();
+$plugins = $manager->get_installed_plugins();
+
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'local_pluginsview'));
+
+$table = new pluginsview_table('local-pluginsview-list', $PAGE->url);
+$table->setup();
+foreach ($plugins as $plugin) {
+    $table->add_data([
+        format_string($plugin->displayname),
+        s($plugin->component),
+        s($plugin->type),
+        s($plugin->versiondb ?? '-'),
+    ]);
+}
+$table->finish_output();
+
 echo $OUTPUT->footer();
