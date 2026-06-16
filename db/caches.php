@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version metadata for the pluginsview local plugin.
+ * Cache definitions for local_pluginsview.
  *
  * @package    local_pluginsview
  * @copyright  2026 Jean Lúcio
@@ -24,8 +24,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_pluginsview';
-$plugin->version = 2026061602;
-$plugin->requires = 2024100700;
-$plugin->maturity = MATURITY_ALPHA;
-$plugin->release = '0.1.0';
+$definitions = [
+    'plugindirectorydata' => [
+        'mode' => cache_store::MODE_APPLICATION,
+        'simplekeys' => true,
+        'simpledata' => false,
+        'staticacceleration' => true,
+        'ttl' => 86400,
+    ],
+];
