@@ -39,7 +39,7 @@ $PAGE->set_title(get_string('pluginname', 'local_pluginsview'));
 $PAGE->set_heading(get_string('pluginname', 'local_pluginsview'));
 
 $manager = new pluginsview_manager();
-$plugins = $manager->get_installed_plugins();
+$plugins = $manager->get_enriched_plugins();
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'local_pluginsview'));
@@ -47,12 +47,7 @@ echo $OUTPUT->heading(get_string('pluginname', 'local_pluginsview'));
 $table = new pluginsview_table('local-pluginsview-list', $PAGE->url);
 $table->setup();
 foreach ($plugins as $plugin) {
-    $table->add_data([
-        format_string($plugin->displayname),
-        s($plugin->component),
-        s($plugin->type),
-        s($plugin->versiondb ?? '-'),
-    ]);
+    $table->add_data($table->build_row($plugin));
 }
 $table->finish_output();
 

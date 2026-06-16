@@ -51,4 +51,46 @@ final class pluginsview_manager_test extends \advanced_testcase {
         $this->assertNotEmpty($forum->displayname);
         $this->assertNotEmpty($forum->versiondb);
     }
+
+    /**
+     * The status is pending when no cached directory info exists.
+     *
+     * @return void
+     */
+    public function test_determine_status_pending(): void {
+        $manager = new pluginsview_manager();
+        $this->assertSame(pluginsview_manager::STATUS_PENDING, $manager->determine_status('2026010100', null));
+    }
+
+    /**
+     * The status reflects the comparison between installed and available versions.
+     *
+     * @return void
+     */
+    public function test_determine_status_version_comparison(): void {
+        $manager = new pluginsview_manager();
+
+        $outdated = (object) ['status' => api\moodle_directory_api::STATUS_FOUND, 'version' => '2026050100'];
+        $this->assertSame(
+            pluginsview_manager::STATUS_OUTDATED,
+            $manager->determine_status('2026010100', $outdated)
+        );
+
+        $uptodate = (object) ['status' => api\moodle_directory_api::STATUS_FOUND, 'version' => '2026010100'];
+        $this->assertSame(
+            pluginsview_manager::STATUS_UPTODATE,
+            $manager->determine_status('2026010100', $uptodate)
+        );
+    }
+
+    /**
+     * A plugin missing from the directory is reported as not found.
+     *
+     * @return void
+     */
+    public function test_determine_status_not_found(): void {
+        $manager = new pluginsview_manager();
+        $info = (object) ['status' => api\moodle_directory_api::STATUS_NOTFOUND, 'version' => null];
+        $this->assertSame(pluginsview_manager::STATUS_NOTFOUND, $manager->determine_status('2026010100', $info));
+    }
 }

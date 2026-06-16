@@ -24,9 +24,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['colavailableversion'] = 'Versão disponível';
 $string['colcomponent'] = 'Frankenstyle';
+$string['collink'] = 'Link';
 $string['colname'] = 'Nome';
+$string['colreleasedate'] = 'Data de lançamento';
+$string['colstatus'] = 'Status';
 $string['coltype'] = 'Tipo';
 $string['colversiondb'] = 'Versão instalada';
 $string['pluginname'] = 'Visão de plugins';
 $string['pluginsview:view'] = 'Visualizar a lista de plugins instalados';
+$string['statusnotfound'] = 'Não disponível no diretório oficial';
+$string['statusoutdated'] = 'Atualização disponível';
+$string['statuspending'] = 'Verificando…';
+$string['statusuptodate'] = 'Atualizado';
+$string['viewindirectory'] = 'Ver no diretório';

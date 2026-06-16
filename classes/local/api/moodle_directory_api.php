@@ -76,6 +76,29 @@ class moodle_directory_api {
     }
 
     /**
+     * Returns cached directory results for several plugins without hitting the network.
+     *
+     * @param string[] $components Frankenstyle names to look up.
+     * @return array<string, stdClass|null> Map of component to cached result, or null when not cached.
+     */
+    public function get_cached_many(array $components): array {
+        if (empty($components)) {
+            return [];
+        }
+
+        $cache = cache::make('local_pluginsview', 'plugindirectorydata');
+        $results = $cache->get_many($components);
+
+        foreach ($results as $component => $value) {
+            if ($value === false) {
+                $results[$component] = null;
+            }
+        }
+
+        return $results;
+    }
+
+    /**
      * Parses a raw pluginfo.php JSON body into a normalised result object.
      *
      * @param string $component Frankenstyle name of the plugin.
