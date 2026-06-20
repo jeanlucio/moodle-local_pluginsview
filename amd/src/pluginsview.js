@@ -47,7 +47,7 @@ define(['core/ajax', 'core/notification', 'core/str'], function(Ajax, Notificati
                     pending: strings[4]
                 };
 
-                pendingElements.forEach(async (el) => {
+                pendingElements.forEach(async el => {
                     const component = el.dataset.component;
                     if (!component) {
                         return;
