@@ -176,7 +176,7 @@ if (!$isdownloading) {
         'type',
         $filtertype,
         false,
-        ['id' => 'filter-type', 'class' => 'form-control custom-select']
+        ['id' => 'filter-type']
     );
     echo html_writer::end_div();
 
@@ -194,7 +194,7 @@ if (!$isdownloading) {
         'status',
         $filterstatus,
         false,
-        ['id' => 'filter-status', 'class' => 'form-control custom-select']
+        ['id' => 'filter-status']
     );
     echo html_writer::end_div();
 
