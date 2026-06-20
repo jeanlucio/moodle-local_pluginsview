@@ -142,7 +142,7 @@ if ($search !== '' || $filtertype !== '' || $filterstatus !== '') {
 // Build table.
 $table = new pluginsview_table('local-pluginsview-list', $PAGE->url);
 $table->is_downloading($download, 'plugins_overview', get_string('pluginname', 'local_pluginsview'));
-$table->show_download_buttons(['csv']);
+$table->show_download_buttons_at([TABLE_P_BOTTOM]);
 
 $isdownloading = $table->is_downloading();
 
