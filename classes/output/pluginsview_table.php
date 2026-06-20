@@ -52,7 +52,8 @@ class pluginsview_table extends \flexible_table {
             get_string('collink', 'local_pluginsview'),
         ]);
         $this->define_baseurl($baseurl);
-        $this->sortable(false);
+        $this->sortable(true, 'displayname', SORT_ASC);
+        $this->no_sorting('link');
         $this->collapsible(false);
     }
 

@@ -1,0 +1,88 @@
+/**
+ * This file is part of Moodle - https://moodle.org/
+ *
+ * Moodle is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Moodle is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+ */
+/**
+ * Styles for local_pluginsview overview page.
+ *
+ * @package    local_pluginsview
+ * @copyright  2026 Jean Lúcio
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.path-local-pluginsview .local-pluginsview-status {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.path-local-pluginsview .local-pluginsview-status-uptodate {
+    background-color: var(--success-bg, #d1e7dd);
+    color: var(--success-text, #0f5132);
+}
+
+.path-local-pluginsview .local-pluginsview-status-outdated {
+    background-color: var(--danger-bg, #f8d7da);
+    color: var(--danger-text, #842029);
+}
+
+.path-local-pluginsview .local-pluginsview-status-notfound {
+    background-color: var(--secondary-bg, #e2e3e5);
+    color: var(--secondary-text, #41464b);
+}
+
+.path-local-pluginsview .local-pluginsview-status-pending {
+    background-color: var(--info-bg, #cff4fc);
+    color: var(--info-text, #055160);
+}
+
+.path-local-pluginsview .local-pluginsview-filters {
+    margin-block-end: 1.5rem;
+    padding: 1rem;
+    background-color: var(--light, #f8f9fa);
+    border-radius: 0.375rem;
+    border: 1px solid var(--border-color, #dee2e6);
+}
+
+.path-local-pluginsview .local-pluginsview-filters form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.path-local-pluginsview .local-pluginsview-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    margin-inline-end: 0.5rem;
+}
+
+.path-local-pluginsview .local-pluginsview-filters .filter-group label {
+    margin-block-end: 0.25rem;
+    font-weight: 600;
+}
+
+.path-local-pluginsview .local-pluginsview-export-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-block-end: 1rem;
+    justify-content: flex-end;
+}
