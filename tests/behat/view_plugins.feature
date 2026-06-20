@@ -31,7 +31,7 @@ Feature: View installed additional plugins and use filters
   @javascript
   Scenario: Administrator can view, search, and filter additional plugins
     Given I am on homepage
-    And I navigate to "local/pluginsview/index.php"
+    And I visit "/local/pluginsview/index.php"
     Then I should see "Plugins view"
     And I should see "local_pluginsview"
 
@@ -46,5 +46,5 @@ Feature: View installed additional plugins and use filters
     Then I should see "local_pluginsview"
 
     # Clear filters.
-    When I click on "Clear"
-    Then the field "Search" should match ""
+    When I follow "Clear"
+    Then the field "Search" matches value ""
