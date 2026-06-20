@@ -13,13 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Behat tests for local_pluginsview overview page.
- *
- * @package    local_pluginsview
- * @copyright  2026 Jean Lúcio
- * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+# Behat tests for local_pluginsview overview page.
+#
+# @package    local_pluginsview
+# @copyright  2026 Jean Lúcio
+# @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
 @local @local_pluginsview
 Feature: View installed additional plugins and use filters
