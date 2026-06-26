@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['cachettl'] = 'Cache TTL';
+$string['cachettl_desc'] = 'Time to live (in seconds) for the plugins directory cache. Recommended: 86400 (24 hours).';
 $string['clear'] = 'Clear';
 $string['colavailableversion'] = 'Available version';
 $string['colcomponent'] = 'Frankenstyle';
@@ -39,6 +41,9 @@ $string['filterall'] = 'All';
 $string['invalidplugin'] = 'Invalid plugin';
 $string['pluginname'] = 'Plugins view';
 $string['pluginsview:view'] = 'View the list of installed plugins';
+$string['privacy:metadata:branch'] = 'The Moodle branch version of this site.';
+$string['privacy:metadata:downloadmoodleorg'] = 'The Moodle plugins directory is used to check for available updates and release dates of installed plugins.';
+$string['privacy:metadata:plugin'] = 'The frankenstyle name of the plugin being checked.';
 $string['search'] = 'Search';
 $string['statusnotfound'] = 'Not in the directory';
 $string['statusoutdated'] = 'Update available';

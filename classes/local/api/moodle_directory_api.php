@@ -53,7 +53,12 @@ class moodle_directory_api {
         $cache = cache::make('local_pluginsview', 'plugindirectorydata');
 
         $cached = $cache->get($component);
-        if ($cached !== false) {
+        $ttl = (int) get_config('local_pluginsview', 'cachettl');
+        if (empty($ttl)) {
+            $ttl = 86400;
+        }
+
+        if ($cached !== false && isset($cached->timestamp) && (time() - $cached->timestamp) <= $ttl) {
             return $cached;
         }
 
@@ -102,8 +107,13 @@ class moodle_directory_api {
         $cache = cache::make('local_pluginsview', 'plugindirectorydata');
         $results = $cache->get_many($components);
 
+        $ttl = (int) get_config('local_pluginsview', 'cachettl');
+        if (empty($ttl)) {
+            $ttl = 86400;
+        }
+
         foreach ($results as $component => $value) {
-            if ($value === false) {
+            if ($value === false || !isset($value->timestamp) || (time() - $value->timestamp) > $ttl) {
                 $results[$component] = null;
             }
         }
@@ -220,6 +230,7 @@ class moodle_directory_api {
         $result->maturity = null;
         $result->releasedat = null;
         $result->pluginurl = null;
+        $result->timestamp = time();
 
         return $result;
     }

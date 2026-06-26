@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['cachettl'] = 'TTL do Cache';
+$string['cachettl_desc'] = 'Tempo de vida (em segundos) do cache do diretório de plugins. Recomendado: 86400 (24 horas).';
 $string['clear'] = 'Limpar';
 $string['colavailableversion'] = 'Versão disponível';
 $string['colcomponent'] = 'Frankenstyle';
@@ -39,6 +41,9 @@ $string['filterall'] = 'Todos';
 $string['invalidplugin'] = 'Plugin inválido';
 $string['pluginname'] = 'Visão de plugins';
 $string['pluginsview:view'] = 'Visualizar a lista de plugins instalados';
+$string['privacy:metadata:branch'] = 'A versão (branch) do Moodle deste site.';
+$string['privacy:metadata:downloadmoodleorg'] = 'O diretório de plugins do Moodle é utilizado para consultar atualizações disponíveis e datas de lançamento dos plugins instalados.';
+$string['privacy:metadata:plugin'] = 'O nome frankenstyle do plugin sendo consultado.';
 $string['search'] = 'Buscar';
 $string['statusnotfound'] = 'Não disponível no diretório oficial';
 $string['statusoutdated'] = 'Atualização disponível';

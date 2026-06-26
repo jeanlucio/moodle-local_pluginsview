@@ -150,38 +150,26 @@ if (!$isdownloading) {
     echo $OUTPUT->header();
     echo $OUTPUT->heading(get_string('pluginname', 'local_pluginsview'));
 
-    // Render filter form.
-    echo html_writer::start_div('local-pluginsview-filters');
-    echo html_writer::start_tag('form', ['method' => 'get', 'action' => $PAGE->url->out(false)]);
+    // Prepare template data.
+    $templatedata = [
+        'actionurl' => $PAGE->url->out(false),
+        'search' => $search,
+        'types' => [],
+        'statuses' => [],
+    ];
 
-    echo html_writer::start_div('filter-group');
-    echo html_writer::label(get_string('search', 'local_pluginsview'), 'filter-search');
-    echo html_writer::empty_tag('input', [
-        'type' => 'text',
-        'name' => 'search',
-        'id' => 'filter-search',
-        'value' => $search,
-        'class' => 'form-control',
-    ]);
-    echo html_writer::end_div();
-
-    echo html_writer::start_div('filter-group');
-    echo html_writer::label(get_string('coltype', 'local_pluginsview'), 'filter-type');
     $typeoptions = ['' => get_string('filterall', 'local_pluginsview')];
     foreach ($types as $t) {
         $typeoptions[$t] = $t;
     }
-    echo html_writer::select(
-        $typeoptions,
-        'type',
-        $filtertype,
-        false,
-        ['id' => 'filter-type']
-    );
-    echo html_writer::end_div();
+    foreach ($typeoptions as $val => $name) {
+        $templatedata['types'][] = [
+            'value' => $val,
+            'name' => $name,
+            'selected' => ($filtertype === (string)$val),
+        ];
+    }
 
-    echo html_writer::start_div('filter-group');
-    echo html_writer::label(get_string('colstatus', 'local_pluginsview'), 'filter-status');
     $statusoptions = [
         '' => get_string('filterall', 'local_pluginsview'),
         pluginsview_manager::STATUS_UPTODATE => get_string('statusuptodate', 'local_pluginsview'),
@@ -189,37 +177,23 @@ if (!$isdownloading) {
         pluginsview_manager::STATUS_NOTFOUND => get_string('statusnotfound', 'local_pluginsview'),
         pluginsview_manager::STATUS_PENDING => get_string('statuspending', 'local_pluginsview'),
     ];
-    echo html_writer::select(
-        $statusoptions,
-        'status',
-        $filterstatus,
-        false,
-        ['id' => 'filter-status']
-    );
-    echo html_writer::end_div();
+    foreach ($statusoptions as $val => $name) {
+        $templatedata['statuses'][] = [
+            'value' => $val,
+            'name' => $name,
+            'selected' => ($filterstatus === (string)$val),
+        ];
+    }
 
-    echo html_writer::start_div('filter-actions d-flex gap-2');
-    echo html_writer::empty_tag('input', [
-        'type' => 'submit',
-        'value' => get_string('filter', 'local_pluginsview'),
-        'class' => 'btn btn-primary',
-    ]);
-    echo html_writer::link($PAGE->url, get_string('clear', 'local_pluginsview'), ['class' => 'btn btn-secondary']);
-    echo html_writer::end_div();
-
-    echo html_writer::end_tag('form');
-    echo html_writer::end_div();
-
-    // Render JSON export button.
-    echo html_writer::start_div('local-pluginsview-export-buttons');
     $jsonurl = new moodle_url($PAGE->url, [
         'download' => 'json',
         'search' => $search,
         'type' => $filtertype,
         'status' => $filterstatus,
     ]);
-    echo html_writer::link($jsonurl, get_string('exportjson', 'local_pluginsview'), ['class' => 'btn btn-outline-primary']);
-    echo html_writer::end_div();
+    $templatedata['jsonurl'] = $jsonurl->out(false);
+
+    echo $OUTPUT->render_from_template('local_pluginsview/pluginsview_page', $templatedata);
 
     $PAGE->requires->js_call_amd('local_pluginsview/pluginsview', 'init');
     $table->pagesize(50, count($plugins));
