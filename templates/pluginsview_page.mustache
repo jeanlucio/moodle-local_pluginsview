@@ -25,6 +25,15 @@
     * types - Array of types for the select dropdown (value, name, selected).
     * statuses - Array of statuses for the select dropdown (value, name, selected).
     * jsonurl - The URL for JSON export.
+
+    Example context (json):
+    {
+        "actionurl": "#",
+        "search": "test",
+        "types": [{"value": "local", "name": "Local", "selected": true}],
+        "statuses": [{"value": "uptodate", "name": "Up to date", "selected": false}],
+        "jsonurl": "#"
+    }
 }}
 <div class="local-pluginsview-filters">
     <form method="get" action="{{actionurl}}">
@@ -35,7 +44,7 @@
 
         <div class="filter-group">
             <label for="filter-type">{{#str}} coltype, local_pluginsview {{/str}}</label>
-            <select name="type" id="filter-type" class="custom-select form-select">
+            <select name="type" id="filter-type" class="form-select">
                 {{#types}}
                 <option value="{{value}}" {{#selected}}selected{{/selected}}>{{name}}</option>
                 {{/types}}
@@ -44,7 +53,7 @@
 
         <div class="filter-group">
             <label for="filter-status">{{#str}} colstatus, local_pluginsview {{/str}}</label>
-            <select name="status" id="filter-status" class="custom-select form-select">
+            <select name="status" id="filter-status" class="form-select">
                 {{#statuses}}
                 <option value="{{value}}" {{#selected}}selected{{/selected}}>{{name}}</option>
                 {{/statuses}}
