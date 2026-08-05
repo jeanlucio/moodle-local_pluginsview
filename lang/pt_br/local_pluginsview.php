@@ -41,6 +41,7 @@ $string['filterall'] = 'Todos';
 $string['invalidplugin'] = 'Plugin inválido';
 $string['pluginname'] = 'Visão de plugins';
 $string['pluginsview:view'] = 'Visualizar a lista de plugins instalados';
+$string['privacy:metadata'] = 'O Plugins View não armazena dados próprios. Ele apenas consulta listagens públicas de plugins no diretório do Moodle, sem transmitir nenhum dado pessoal.';
 $string['privacy:metadata:branch'] = 'A versão (branch) do Moodle deste site.';
 $string['privacy:metadata:downloadmoodleorg'] = 'O diretório de plugins do Moodle é utilizado para consultar atualizações disponíveis e datas de lançamento dos plugins instalados.';
 $string['privacy:metadata:plugin'] = 'O nome frankenstyle do plugin sendo consultado.';

@@ -17,16 +17,22 @@
 namespace local_pluginsview\privacy;
 
 use core_privacy\local\metadata\collection;
+use core_privacy\local\metadata\null_provider;
 use core_privacy\local\metadata\provider as metadata_provider;
 
 /**
  * Privacy API implementation for the Plugins view plugin.
  *
+ * The plugin stores no personal data of its own — it only queries public plugin
+ * listings from the Moodle plugins directory (frankenstyle name and site branch,
+ * no user-identifying data). Implements null_provider for that reason, while
+ * still declaring the external call via metadata_provider for transparency.
+ *
  * @package    local_pluginsview
  * @copyright  2026 Jean Lúcio
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements metadata_provider {
+class provider implements metadata_provider, null_provider {
     /**
      * Returns meta data about this system.
      *
@@ -40,5 +46,15 @@ class provider implements metadata_provider {
         ], 'privacy:metadata:downloadmoodleorg');
 
         return $collection;
+    }
+
+    /**
+     * Returns the language string identifier explaining why this plugin
+     * stores no data.
+     *
+     * @return string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
     }
 }
