@@ -1,10 +1,14 @@
 # Moodle Local Plugins View
 
+![Moodle](https://img.shields.io/badge/Moodle-4.5%2B-orange?style=flat&logo=moodle&logoColor=white)
+![License](https://img.shields.io/badge/License-GPLv3-blue?style=flat)
+![Status](https://img.shields.io/badge/Status-Stable-green?style=flat)
+[![Latest Release](https://img.shields.io/github/v/release/jeanlucio/moodle-local_pluginsview?style=flat)](https://github.com/jeanlucio/moodle-local_pluginsview/releases)
+[![Author](https://img.shields.io/badge/by-Jean_Lucio-6f42c1?style=flat)](https://marketplace.moodle.com/user/984)
+
 [![Moodle Plugin CI](https://github.com/jeanlucio/moodle-local_pluginsview/actions/workflows/ci.yml/badge.svg)](https://github.com/jeanlucio/moodle-local_pluginsview/actions/workflows/ci.yml)
-[![MDL Shield](https://img.shields.io/endpoint?url=https%3A%2F%2Fmdlshield.com%2Fapi%2Fbadge%2Flocal_pluginsview)](https://mdlshield.com/plugins/local_pluginsview)
-![Moodle](https://img.shields.io/badge/Moodle-4.5%2B-orange?style=flat-square&logo=moodle&logoColor=white)
-![License](https://img.shields.io/badge/License-GPLv3-blue?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Stable-green?style=flat-square)
+[![Last Commit](https://img.shields.io/github/last-commit/jeanlucio/moodle-local_pluginsview?style=flat)](https://github.com/jeanlucio/moodle-local_pluginsview/commits)
+[![Open Issues](https://img.shields.io/github/issues/jeanlucio/moodle-local_pluginsview?style=flat)](https://github.com/jeanlucio/moodle-local_pluginsview/issues)
 
 [English](#english) | [Português](#português)
 
