@@ -24,6 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['cachedef_plugindirectorydata'] = 'Plugin data from the Moodle plugins directory';
 $string['cachettl'] = 'Cache TTL';
 $string['cachettl_desc'] = 'Time to live (in seconds) for the plugins directory cache. Recommended: 86400 (24 hours).';
 $string['clear'] = 'Clear';
